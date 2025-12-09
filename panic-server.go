@@ -24,11 +24,11 @@ func runPanicServers(Clap <-chan RequestMap, Flap chan<- RequestMap) (Errors []e
 		servers = append(servers, panicServer)
 		serverManager.AddAsyncServer(panicServer)
 	}
-	if DHI0_Addr2 != "" && DHI0_Addr2_Crt != "" && DHI0_Addr2_Key != "" {
-		panicServerTLS := MakeServer(DHI0_Addr2)
-		servers = append(servers, panicServerTLS)
-		serverManager.AddAsyncServerTLS(DHI0_Addr2_Crt, DHI0_Addr2_Key, panicServerTLS)
-	}
+	// if DHI0_Addr2 != "" && DHI0_Addr2_Crt != "" && DHI0_Addr2_Key != "" {
+	// 	panicServerTLS := MakeServer(DHI0_Addr2)
+	// 	servers = append(servers, panicServerTLS)
+	// 	serverManager.AddAsyncServerTLS(DHI0_Addr2_Crt, DHI0_Addr2_Key, panicServerTLS)
+	// }
 
 	if len(servers) < 1 {
 		requestMap["StartupCode"] = "500"
@@ -40,7 +40,7 @@ func runPanicServers(Clap <-chan RequestMap, Flap chan<- RequestMap) (Errors []e
 
 	serverManager.Run()
 
-	if DHI0_RedirectHTTP && !regexp.MustCompile(`^https\:\/\/.+$`).MatchString(DHI0_RedirectDestination) {
+	if DHI0_RedirectHTTP && !regexp.MustCompile(`^http\:\/\/.+$`).MatchString(DHI0_RedirectDestination) {
 		requestMap["StartupCode"] = "500"
 		requestMap["StartupNote"] = "Conf parameter DHI0_RedirectDestination not valid"
 		fmt.Println("Setting StartupCode to 500!")

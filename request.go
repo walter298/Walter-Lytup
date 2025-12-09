@@ -3,7 +3,7 @@ package main
 import "net/http"
 
 type Request struct {
-	SrID string         `json:"SrID"`
+	SrID string         `json:"Srvc"`
 	Seed map[string]any `json:"Seed"`
 }
 type ResponseHandler struct {

@@ -1,0 +1,1 @@
+curl -k -X POST http://localhost:80 -H "Content-Type: application/json" -d "{\"Srvc\": \"sr05\"}"

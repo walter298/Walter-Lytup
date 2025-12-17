@@ -1,1 +1,1 @@
-curl -k -X POST http://localhost:80 -H "Content-Type: application/json" -d "{\"Srvc\": \"sr05\"}"
+curl -k -X POST http://localhost:80 -H "Content-Type: application/json" -d "{\"ServiceID\": \"weather\"}"

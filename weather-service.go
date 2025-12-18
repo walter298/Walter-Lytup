@@ -53,6 +53,7 @@ var WeatherCodes = map[int]string{
 type WeatherRequest struct {
 	Latitude  string `json:"Latitude"`
 	Longitude string `json:"Longitude"`
+	Days string `json:"Days"`
 }
 
 func (r WeatherRequest) hash() string {
@@ -149,8 +150,8 @@ func (ws *WeatherService) Run(jsonReq RequestJson) (ret ServiceResult) {
         }()
     }
 
-	url := fmt.Sprintf("https://api.open-meteo.com/v1/forecast?latitude=%v&longitude=%v&hourly=temperature_2m,relative_humidity_2m,windspeed_10m,winddirection_10m,weathercode",
-		req.Latitude, req.Longitude)
+	url := fmt.Sprintf("https://api.open-meteo.com/v1/forecast?latitude=%v&longitude=%v&hourly=temperature_2m,relative_humidity_2m,windspeed_10m,winddirection_10m,weathercode&forecast_days=%v",
+		req.Latitude, req.Longitude, req.Days)
     
 	resp, err := http.Get(url) 
 	if err != nil {

@@ -1,1 +1,1 @@
-curl -k -X POST http://localhost:80 -H "Content-Type: application/json" -d "{\"ServiceID\": \"weather\", \"Body\": {\"Latitude\": \"52.52\", \"Longitude\": \"13.41\"}}"
+curl -k -X POST http://localhost:80 -H "Content-Type: application/json" -d "{\"ServiceID\": \"weather\", \"Body\": {\"Latitude\": \"52.52\", \"Longitude\": \"13.41\", \"Days\": \"1\"}}"
